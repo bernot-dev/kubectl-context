@@ -27,7 +27,6 @@ const _ = Gettext.gettext;
 
 const ByteArray = imports.byteArray;
 const ExtensionUtils = imports.misc.extensionUtils;
-// const Lang = imports.lang;
 const Me = ExtensionUtils.getCurrentExtension();
 const Main = imports.ui.main;
 const MainLoop = imports.mainloop;
