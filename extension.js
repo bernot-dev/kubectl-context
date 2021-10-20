@@ -45,7 +45,7 @@ const Indicator = GObject.registerClass(
         style_class: "system-status-icon",
       });
       this.currentContextLabel = new St.Label({
-        text: "<Loading>",
+        text: _("loading"),
         y_align: Clutter.ActorAlign.CENTER,
       });
       box.add_child(icon);
@@ -81,7 +81,7 @@ const Indicator = GObject.registerClass(
           throw new Error(err);
         }
       } catch (e) {
-        this.currentContextLabel.set_text("<error>");
+        this.currentContextLabel.set_text(_("error"));
         logError(e, "ExtensionError");
       } finally {
         this.currentContextLabel.queue_redraw();
@@ -108,7 +108,7 @@ const Indicator = GObject.registerClass(
           throw new Error(err);
         }
       } catch (e) {
-        this.currentContextLabel.set_text("<error>");
+        this.currentContextLabel.set_text(_("error"));
         logError(e, "ExtensionError");
       } finally {
         this.currentContextLabel.queue_redraw();
@@ -126,14 +126,14 @@ class Extension {
   }
 
   enable() {
-    log(`enabling ${Me.metadata.name}`);
+    log(`${_("enabling")} ${Me.metadata.name}`);
 
     this._indicator = new Indicator();
     Main.panel.addToStatusArea(this._uuid, this._indicator);
   }
 
   disable() {
-    log(`disabling ${Me.metadata.name}`);
+    log(`${_("disabling")} ${Me.metadata.name}`);
 
     this._indicator.destroy();
     this._indicator = null;

@@ -3,6 +3,6 @@
   "name": "kubectl context",
   "description": "Displays kubectl current-context",
   "version": 1,
-  "shell-version": ["3.38"],
+  "shell-version": ["3.38", "40"],
   "url": "https://github.com/bernot-dev/kubectl-context"
 }
