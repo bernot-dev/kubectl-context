@@ -117,29 +117,18 @@ const Indicator = GObject.registerClass(
   }
 );
 
-class Extension {
-  constructor(uuid) {
-    this._uuid = uuid;
-    this.ticker;
+let Extension;
 
-    ExtensionUtils.initTranslations(GETTEXT_DOMAIN);
-  }
+function enable() {
+  log(`${_("enabling")} ${Me.metadata.name}`);
 
-  enable() {
-    log(`${_("enabling")} ${Me.metadata.name}`);
-
-    this._indicator = new Indicator();
-    Main.panel.addToStatusArea(this._uuid, this._indicator);
-  }
-
-  disable() {
-    log(`${_("disabling")} ${Me.metadata.name}`);
-
-    this._indicator.destroy();
-    this._indicator = null;
-  }
+  Extension = new Indicator();
+  Main.panel.addToStatusArea("Extension", Extension);
 }
 
-function init(meta) {
-  return new Extension(meta.uuid);
+function disable() {
+  log(`${_("disabling")} ${Me.metadata.name}`);
+  
+  Extension.destroy();
+  Extension = null;
 }
